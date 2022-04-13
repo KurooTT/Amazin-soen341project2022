@@ -5,8 +5,8 @@ if(!isset($_SESSION)){
 if(!isset($_SESSION['username'])){
     ?>
     <header>
-        <div class="nav-wrapper">
-            <nav>
+        <div class="nav-wrapper navbar">
+            <nav >
                 <div class="logo-wrapper">
                     <p id='logo'> <a href='../../../index.php'>AMAZIN</a></p>
                 </div>
@@ -121,7 +121,7 @@ if(!isset($_SESSION['username'])){
     if($type == "user"){                      ?>
         <header>
             <div class="nav-wrapper">
-                <nav>
+                <nav >
                     <div class="logo-wrapper">
                         <p id='logo'> <a href='../../../index.php'>AMAZIN</a></p>
                     </div>
@@ -232,7 +232,7 @@ if(!isset($_SESSION['username'])){
 
         <header>
             <div class="nav-wrapper">
-                <nav>
+                <nav >
                     <div class="logo-wrapper">
                         <p id='logo'> <a href='../../../../index.php'>AMAZIN</a></p>
 

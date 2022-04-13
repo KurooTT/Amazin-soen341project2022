@@ -21,10 +21,11 @@
 
     include "navbar.php";
   ?>     
-  <div class="mainpage-img">
-      <img src="assets/mainpageimage.jpg">
+  <div class="mainpage-img" style="background-image: url(assets/blue.jpg); height: 370px; width: 98%;   margin: auto; padding: 10px;">
+      <h1 style="margin-top: 150px; color:aliceblue; font-size:400%; margin-right: 45%;"> Contact Us</h1>
+     <!-- <img src="assets/mainpageimage.jpg">-->
   </div>
-  <div class="main-content">
+  <div class="main-content" style="margin-left: 100px; width: 200 px;">
 
       <div class="container-md">
       <h2 class="title">Have question about our services?</h2>
