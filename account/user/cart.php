@@ -1,3 +1,6 @@
+// The code which acts as a cart for the user who is checking out an item
+// or multiple items at once.
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,6 +46,7 @@ include "../../navbar.php";
             $name = $row['name'];
             $price = $row['price'];
 
+            // Display the total price so the user can see how much they're paying
             $quantity = $row['quantity'];
             $_SESSION['quantity'] = $quantity;
             $total = $total + $price*$quantity;
@@ -102,6 +106,7 @@ include "../../navbar.php";
 
         }
 
+        // Output total to see how much the user is paying before paying for the order
         if ($total > 0 ) {
             echo "<b>total is: " . $total . "<br></b>";
             echo "
