@@ -12,7 +12,9 @@ if(!isset($_SESSION['username'])){
                 </div>
                 <div class="menu-wrapper">
                     <ul class="menu">
-                        <?php if(str_contains($_SERVER['REQUEST_URI'],"/products/")){
+                        <?php 
+                        //navbar item that links to landing page
+                        if(str_contains($_SERVER['REQUEST_URI'],"/products/")){
                             echo' <li class="menu-item"><a href="product-landing.php"> Shop</a>';
                         }else if(str_contains($_SERVER['REQUEST_URI'],"index")){
                             echo ' <li class="menu-item"><a href="products/product-landing.php"> Shop</a>';
@@ -24,6 +26,8 @@ if(!isset($_SESSION['username'])){
 
                         <ul class="submenu">
                             <?php
+                            //when the categories tab is clicked the following op[tions are shown
+                            // jewelry, tools, electronics and clothes
                             $aisles = ["jewelry", "tools", "electronics", "clothes"];
                             foreach ($aisles as $aisle) {
                                 $displayName = strtoupper(substr($aisle, 0, 1)) . substr($aisle, 1);
@@ -48,6 +52,7 @@ if(!isset($_SESSION['username'])){
                         }?>
 
                         <?php if(isset($_SESSION['username'])){
+                            //tab that links to the users cart
                             if(str_contains($_SERVER['REQUEST_URI'],"index")) {
                                 echo " <li class='menu-item'><a href='account/user/cart.php'>Cart</a></li>";
                             }else if(str_contains($_SERVER['REQUEST_URI'],"account")){
@@ -58,6 +63,7 @@ if(!isset($_SESSION['username'])){
 
                         <?php
                         if(isset($_SESSION["admin"])) {
+                            //admin has a special submenu to go to different lists
                             echo "<li class='menu-item'><a href=''>Admin</a>";
                             echo  "<ul class='submenu'>";
                             echo "<li class='menu-item submenu-item'><a href='/backstore/product-list.php'>Products</a></li>";
@@ -69,6 +75,7 @@ if(!isset($_SESSION['username'])){
                         }
                         if(isset($_SESSION["username"])) {
                             if(!str_contains($_SERVER['REQUEST_URI'],"/account/")){
+                                //user settings such as loggin out.
                                 echo "<li  class='menu-item'><a href='account/general/myAccount.php'>Hello " . $_SESSION["username"] . "</a></li>";
                                 echo "<li class='menu-item'><a href='account/general/logout.php'> log out</a></li>";
                             }else{
@@ -79,6 +86,7 @@ if(!isset($_SESSION['username'])){
 
 
                         }else if (str_contains($_SERVER['REQUEST_URI'],"/account/")) {
+                            //Tab that links to Login page
                             echo "<li class='menu-item'><a href='logIn.php'  > Login </a></li>";
 
                         }else if(str_contains($_SERVER['REQUEST_URI'],"/account/"))  echo "<li class='menu-item'><a href='account/general/logIn.php'  > Login </a></li>";
@@ -88,7 +96,7 @@ if(!isset($_SESSION['username'])){
                                 echo '<li class="menu-item"><form method="post" action="../../products/Search-Result.php"></li>';
                             }else echo '<li class="menu-item"><form method="post" action="../../products/Search-Result.php"></li>';?>
 
-
+                        //Displays search result
                         <li class="menu-item"><form method="post" action="../../products/Search-Result.php"></li>
                         <?php $search = isset($_POST['search']) ? $_POST['search'] : ''; ?>
 
@@ -108,6 +116,7 @@ if(!isset($_SESSION['username'])){
 
 <!--*****************************************User*********************************************************-->
 <?php }else if (isset($_SESSION['username'])){
+    //Connect to the database
     $db = mysqli_connect("localhost", "root", "321trewq", "amazin", "3306") or die ("fail");
     $username = $_SESSION['username'];
     $query = "select type from customers where username ='$username'";
@@ -128,6 +137,7 @@ if(!isset($_SESSION['username'])){
                     <div class="menu-wrapper">
                         <ul class="menu">
                             <?php if(str_contains($_SERVER['REQUEST_URI'],"/products/")){
+                                //links to the product landing page
                                 echo' <li class="menu-item"><a href="product-landing.php"> Shop</a>';
                             }else if(str_contains($_SERVER['REQUEST_URI'],"index")){
                                 echo ' <li class="menu-item"><a href="products/product-landing.php"> Shop</a>';
@@ -138,6 +148,7 @@ if(!isset($_SESSION['username'])){
 
                             <ul class="submenu">
                                 <?php
+                                //submenu for category
                                 $aisles = ["jewelry", "tools", "electronics", "clothes"];
                                 foreach ($aisles as $aisle) {
                                     $displayName = strtoupper(substr($aisle, 0, 1)) . substr($aisle, 1);
@@ -161,6 +172,7 @@ if(!isset($_SESSION['username'])){
                          } ?>
 
                             <?php if(isset($_SESSION['username'])){
+                                //link to cart for when the user is logged in
                                 if(str_contains($_SERVER['REQUEST_URI'],"index")) {
                                     echo " <li class='menu-item'><a href='account/user/cart.php'>Cart</a></li>";
                                 }else if(str_contains($_SERVER['REQUEST_URI'],"account") and !str_contains($_SERVER['REQUEST_URI'],"/general/")){
@@ -170,6 +182,7 @@ if(!isset($_SESSION['username'])){
                             }?>
                             <?php if(isset($_SESSION['username'])){
                                 if(str_contains($_SERVER['REQUEST_URI'],"index")) {
+                                    //link to all the users orders
                                     echo " <li class='menu-item'><a href='account/user/myOrders.php'>My Orders</a></li>";
                                 }else if(str_contains($_SERVER['REQUEST_URI'],"account") and !str_contains($_SERVER['REQUEST_URI'],"/general/")){
                                     echo " <li class='menu-item'><a href='myOrders.php'>My Orders</a></li>";
@@ -180,6 +193,7 @@ if(!isset($_SESSION['username'])){
 
                             <?php
                             if(isset($_SESSION["admin"])) {
+                                //if the Admin is logged in
                                 echo "<li class='menu-item'><a href=''>Admin</a>";
                                 echo  "<ul class='submenu'>";
                                 echo "<li class='menu-item submenu-item'><a href='/backstore/product-list.php'>Products</a></li>";
@@ -241,7 +255,7 @@ if(!isset($_SESSION['username'])){
                     <div class="menu-wrapper">
                         <ul class="menu">
                             <?php if(str_contains($_SERVER['REQUEST_URI'],"/products/")){
-
+                                //links to a page with The products of the sellers
                                 echo' <li class="menu-item"><a href="../../../account/seller/sellerMyProducts.php"> My Products</a>';
                             }else echo ' <li class="menu-item"><a href="../../../account/seller/sellerMyProducts.php"> My Products</a>'
 
@@ -258,6 +272,7 @@ if(!isset($_SESSION['username'])){
                             <li class="menu-item"><a href="../../../account/seller/postItem.php">Post an item</a></li>
                             <?php
                             if(isset($_SESSION["admin"])) {
+                                
                                 echo "<li class='menu-item'><a href=''>Admin</a>";
                                 echo  "<ul class='submenu'>";
                                 echo "<li class='menu-item submenu-item'><a href='/backstore/product-list.php'>Products</a></li>";
