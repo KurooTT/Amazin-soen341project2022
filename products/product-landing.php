@@ -10,10 +10,13 @@
 </head>
 <body>
 <?php
+//provides the manu bar for the page
 include "../navbar.php";
+//connect to the database
 $db = mysqli_connect("localhost", "root", "321trewq", "amazin", "3306") or die ("fail");
 $aisle = isset($_GET['aisle']) ? $_GET['aisle'] : 'general';
 $cleanAisle = strtoupper(substr($aisle, 0, 1)) . substr($aisle, 1);
+//cehck for general products or a specific category
 if($aisle != "general")
 $query = "SELECT * FROM products,customers where category='$aisle' and customers.id = sellerId";
 else $query = "SELECT * FROM products,customers where sellerID = customers.id ";
@@ -30,6 +33,7 @@ $result = mysqli_query($db, $query);
     <div class="content">
         <?php
 
+        //will display evrery product from a category by fetching the information from the database
         while ($row = mysqli_fetch_assoc($result)) {
             $code = $row['id'];
             $name = $row['name'];
@@ -86,6 +90,7 @@ $result = mysqli_query($db, $query);
 </div>
 
 <?php
+//provides the footer for the page
 include "../footer.php";
 ?>
 </body>
