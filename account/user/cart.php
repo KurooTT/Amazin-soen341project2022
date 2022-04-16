@@ -1,5 +1,4 @@
-// The code which acts as a cart for the user who is checking out an item
-// or multiple items at once.
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +14,9 @@
 <?php
 session_start();
 
+// The code which acts as a cart for the user who is checking out an item
+// or multiple items at once.
+    
 $username = $_SESSION['username'];
 $db = mysqli_connect("localhost", "root", "321trewq", "amazin", "3306") or die ("fail");
 $query = "SELECT id FROM customers where username = '$username'";
